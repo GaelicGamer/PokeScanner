@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pokescanner">
 
@@ -13,9 +14,15 @@
         android:supportsRtl="true"
         android:name="android.support.multidex.MultiDexApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+
+        <service
+            android:name=".service.ScanService"
+            android:exported="false"/>
+
+        <activity android:name=".LoginActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|adjustResize">>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,13 +33,28 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_api_key" />
         <activity
+            android:name=".GoogleLoginActivity"
+            android:theme="@style/MapTheme"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
+        <activity
+            android:name=".FilterActivity"
+            android:theme="@style/MapTheme"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
+        <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
+            android:theme="@style/MapTheme"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="fb79ebdaab674d309573e536fb1e7c6a69beccfc" />
+        <meta-data android:name="com.samsung.android.sdk.multiwindow.enable"
+            android:value="true"/>
     </application>
 
 </manifest>
